@@ -13,7 +13,6 @@ import com.technorely.lastfm.R
 import com.technorely.lastfm.data.shared.EThemeType
 import com.technorely.lastfm.data.shared.SharedSettings
 import com.technorely.lastfm.databinding.DialogSettingsBinding
-import kotlinx.android.synthetic.main.dialog_settings.*
 import org.koin.android.ext.android.inject
 
 class SettingsDialog: DialogFragment() {

@@ -1,7 +1,6 @@
 package com.technorely.lastfm.network
 
 import android.util.Log
-import java.lang.Exception
 
 class ResponseHandler {
     fun <T : Any> handleSuccess(data: T): Resource<T> {

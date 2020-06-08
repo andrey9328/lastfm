@@ -2,14 +2,12 @@ package com.technorely.lastfm.repositories
 
 import com.technorely.lastfm.createParser
 import com.technorely.lastfm.data.parsers.ArtistListDeserializer
-import com.technorely.lastfm.data.parsers.SongDeserializer
 import com.technorely.lastfm.data.shared.SharedSettings
 import com.technorely.lastfm.database.dao.ArtistDAO
 import com.technorely.lastfm.database.entity.ArtistEntity
 import com.technorely.lastfm.network.LastFmApi
 import com.technorely.lastfm.network.NetworkBoundResource
 import com.technorely.lastfm.network.Resource
-import org.koin.android.ext.android.inject
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.koin.core.parameter.parametersOf

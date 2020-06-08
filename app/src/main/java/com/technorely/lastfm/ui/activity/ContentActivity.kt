@@ -1,8 +1,6 @@
 package com.technorely.lastfm.ui.activity
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -17,7 +15,6 @@ import com.technorely.lastfm.data.shared.EThemeType
 import com.technorely.lastfm.data.shared.SharedSettings
 import com.technorely.lastfm.setSpinnerListener
 import com.technorely.lastfm.ui.adapters.CountryAdapter
-import com.technorely.lastfm.ui.dialogs.SettingsDialog
 import com.technorely.lastfm.ui.fragments.artis.ArtistListFragment
 import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.view_popular_selector.*
