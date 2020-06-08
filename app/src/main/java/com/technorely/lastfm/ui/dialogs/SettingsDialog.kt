@@ -1,5 +1,6 @@
 package com.technorely.lastfm.ui.dialogs
 
+import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -12,6 +13,7 @@ import com.technorely.lastfm.R
 import com.technorely.lastfm.data.shared.EThemeType
 import com.technorely.lastfm.data.shared.SharedSettings
 import com.technorely.lastfm.databinding.DialogSettingsBinding
+import kotlinx.android.synthetic.main.dialog_settings.*
 import org.koin.android.ext.android.inject
 
 class SettingsDialog: DialogFragment() {
@@ -42,7 +44,8 @@ class SettingsDialog: DialogFragment() {
     }
 
     private fun applySettings() {
-
+        shared.writeOfflineMode(binding?.offlineModeChecker?.isChecked ?: false)
+        targetFragment?.onActivityResult(APPLY_SETTING, Activity.RESULT_OK, null)
     }
 
     companion object {
@@ -52,7 +55,7 @@ class SettingsDialog: DialogFragment() {
         fun showDialog(target: Fragment, fm: FragmentManager) {
             val dialog = SettingsDialog()
             dialog.isCancelable = false
-            dialog.setTargetFragment(target)
+            dialog.setTargetFragment(target, 0)
             dialog.show(fm, TAG)
         }
     }

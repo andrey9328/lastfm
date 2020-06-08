@@ -42,7 +42,7 @@ class SongRepository(
             }
 
             override suspend fun shouldFetch(data: List<SongEntity>?): Boolean {
-                return shared.isOfflineMode()
+                return shared.isOfflineMode().not()
             }
 
             override suspend fun loadFromDb(): List<SongEntity> {

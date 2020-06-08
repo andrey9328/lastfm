@@ -1,5 +1,7 @@
 package com.technorely.lastfm.ui.fragments.artis
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -68,6 +70,13 @@ class ArtistListFragment : Fragment() {
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SettingsDialog.APPLY_SETTING && requestCode == Activity.RESULT_OK) {
+            requireActivity().recreate()
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_settings, menu)
@@ -75,7 +84,7 @@ class ArtistListFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_dialog) {
-            SettingsDialog.showDialog(parentFragmentManager)
+            SettingsDialog.showDialog(this, parentFragmentManager)
             return true
         }
         return super.onOptionsItemSelected(item)

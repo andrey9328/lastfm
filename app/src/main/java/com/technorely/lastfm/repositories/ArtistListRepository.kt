@@ -36,7 +36,7 @@ class ArtistListRepository(private val artistDao: ArtistDAO): KoinComponent {
             }
 
             override suspend fun shouldFetch(data: List<ArtistEntity>?): Boolean {
-                return shared.isOfflineMode()
+                return shared.isOfflineMode().not()
             }
 
             override suspend fun loadFromDb(): List<ArtistEntity> {
