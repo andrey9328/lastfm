@@ -34,6 +34,10 @@ class ContentActivity : AppCompatActivity(R.layout.activity_content) {
         initNavigationGraph()
         supportActionBar?.title = null
         initListeners()
+        if (shared.isOfflineMode())
+            notification.visibility = View.VISIBLE
+        else
+            notification.visibility = View.GONE
     }
 
     override fun onSupportNavigateUp(): Boolean {

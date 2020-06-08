@@ -7,4 +7,6 @@
     <color name="colorPrimaryBlue">#71E2FF</color>
     <color name="colorPrimaryDarkBlue">#32BBFF</color>
     <color name="colorAccentBlue">#71E2FF</color>
+
+    <color name="notifiction">#393939</color>
 </resources>
