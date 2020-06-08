@@ -12,8 +12,7 @@
         android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".App"
-        android:theme="@style/AppTheme">
+        android:name=".App">
         <activity android:name="com.technorely.lastfm.ui.activity.ContentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

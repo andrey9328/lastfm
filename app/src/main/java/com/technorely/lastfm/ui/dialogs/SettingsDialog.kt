@@ -38,13 +38,15 @@ class SettingsDialog: DialogFragment() {
         if (shared.getThemeType() == EThemeType.AUTO_THEME)
             binding?.isDevTheme = BuildConfig.DEBUG
         else
-            binding?.isDevTheme= shared.getThemeType() == EThemeType.DEV_THEME
+            binding?.isDevTheme = shared.getThemeType() == EThemeType.DEV_THEME
         binding?.isDevMode = BuildConfig.DEBUG
         binding?.isOfflineMode = shared.isOfflineMode()
     }
 
     private fun applySettings() {
         shared.writeOfflineMode(binding?.offlineModeChecker?.isChecked ?: false)
+        val themeType = if (binding?.themeTypeChecker?.isChecked == true) EThemeType.DEV_THEME else EThemeType.PROD_THEME
+        shared.writeThemeType(themeType)
         targetFragment?.onActivityResult(APPLY_SETTING, Activity.RESULT_OK, null)
     }
 

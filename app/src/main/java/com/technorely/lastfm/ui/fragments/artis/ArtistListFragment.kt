@@ -72,7 +72,7 @@ class ArtistListFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SettingsDialog.APPLY_SETTING && requestCode == Activity.RESULT_OK) {
+        if (requestCode == SettingsDialog.APPLY_SETTING && resultCode == Activity.RESULT_OK) {
             requireActivity().recreate()
         }
     }

@@ -10,21 +10,28 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import com.technorely.lastfm.BuildConfig
 import com.technorely.lastfm.R
 import com.technorely.lastfm.data.coutries.CountriesData
+import com.technorely.lastfm.data.shared.EThemeType
+import com.technorely.lastfm.data.shared.SharedSettings
 import com.technorely.lastfm.setSpinnerListener
 import com.technorely.lastfm.ui.adapters.CountryAdapter
 import com.technorely.lastfm.ui.dialogs.SettingsDialog
 import com.technorely.lastfm.ui.fragments.artis.ArtistListFragment
 import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.view_popular_selector.*
+import org.koin.android.ext.android.inject
 
 class ContentActivity : AppCompatActivity(R.layout.activity_content) {
 
     private lateinit var navFragment: NavHostFragment
     private lateinit var navController: NavController
 
+    private val shared: SharedSettings by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(getThemeApp())
         super.onCreate(savedInstanceState)
         setSupportActionBar(appToolbar)
         initNavigationGraph()
@@ -47,6 +54,14 @@ class ContentActivity : AppCompatActivity(R.layout.activity_content) {
         countrySectorSpinner.visibility = View.VISIBLE
         arrow.visibility = View.VISIBLE
         toolbar_title.text = getString(R.string.popular_artists)
+    }
+
+    private fun getThemeApp(): Int {
+       return when (shared.getThemeType()) {
+            EThemeType.AUTO_THEME -> if (BuildConfig.DEBUG) R.style.AppThemeDev else R.style.AppThemeProd
+            EThemeType.DEV_THEME -> R.style.AppThemeDev
+            EThemeType.PROD_THEME -> R.style.AppThemeProd
+        }
     }
 
     private fun initNavigationGraph() {
