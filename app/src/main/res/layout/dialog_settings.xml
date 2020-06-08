@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="isDevTheme"
+            type="Boolean" />
+
+        <variable
+            name="isDevMode"
+            type="Boolean" />
+
+        <variable
+            name="isOfflineMode"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:text="@string/type_of_server_now">
+            </TextView>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentEnd="true"
+               android:text="@{isDevMode ? @string/dev_server : @string/prod_server}">
+           </TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:text="@string/use_dev_theme">
+            </TextView>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@{isDevTheme}"
+                android:layout_alignParentEnd="true">
+            </androidx.appcompat.widget.SwitchCompat>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="@{isDevMode ? View.VISIBLE : View.GONE}"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:text="@string/enabled_offline_mode">
+            </TextView>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/offlineModeChecker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@{isOfflineMode}"
+                android:layout_alignParentEnd="true">
+            </androidx.appcompat.widget.SwitchCompat>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

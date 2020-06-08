@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.technorely.lastfm.network.EStatus"/>
+        <import type="android.view.View"/>
+        <variable
+            name="state"
+            type="com.technorely.lastfm.network.EStatus" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/artistListParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{state == EStatus.LOADING ? View.VISIBLE : View.GONE}"
+            android:layout_centerInParent="true">
+        </ProgressBar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:visibility="@{state == EStatus.SUCCESS ? View.VISIBLE : View.GONE}">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+</layout>
