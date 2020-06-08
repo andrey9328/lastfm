@@ -51,6 +51,8 @@ class SongsDetailFragment : Fragment() {
             binding?.state = it.status
 
             if (it.status == EStatus.SUCCESS) {
+                if (it.data.isNullOrEmpty())
+                    Toast.makeText(requireActivity(), "No cache", Toast.LENGTH_LONG).show()
                 songAdapter.setData(it.data)
                 return@Observer
             }

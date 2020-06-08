@@ -60,6 +60,8 @@ class ArtistListFragment : Fragment() {
             if (it == null) return@Observer
             binding?.state = it.status
             if (it.status == EStatus.SUCCESS) {
+                if (it.data.isNullOrEmpty())
+                    Toast.makeText(requireActivity(), "No cache", Toast.LENGTH_LONG).show()
                 artistAdapter.setData(it.data)
                 return@Observer
             }
